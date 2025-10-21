@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nellie Arts - Love Across Continents | TribleTunes</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --content-bg: #181818;
+      --text-primary: #ffffff;
+      --text-secondary: #bbbbbb;
+      --primary: #00ffc3;
+      --primary-hover: #00caa3;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
+    }
+
+    .font-logo {
+      font-family: 'Pacifico', cursive;
+    }
+
+    .font-cursive {
+      font-family: 'Pacifico', cursive;
+    }
+
+    /* Lyrics formatting */
+    .lyrics p {
+      margin-bottom: 1.5rem;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="bg-content-bg shadow-md py-4">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <h1 class="font-logo text-3xl text-primary">TribleTunes</h1>
+      <nav class="space-x-6">
+        <a href="index.html" class="hover:text-primary">Home</a>
+        <a href="review.html" class="hover:text-primary">Reviews</a>
+        <a href="contact.html" class="hover:text-primary">Contact</a>
+        <a href="about.html" class="hover:text-primary">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Blog Post Section -->
+  <main class="container mx-auto px-4 py-16 max-w-5xl">
+    <!-- Song Cover & Title -->
+    <div class="text-center mb-12">
+      <img src="https://ik.imagekit.io/h2tos5anh/Nellie%20Arts-Love%20Across%20Continents.png" 
+           alt="Nellie Arts - Love Across Continents" 
+           class="w-full md:w-1/2 mx-auto rounded-xl shadow-lg mb-6">
+      <h1 class="font-cursive text-5xl md:text-6xl text-primary mb-2">Love Across Continents</h1>
+      <p class="text-text-secondary text-lg md:text-xl">by <strong>Nellie Arts</strong></p>
+    </div>
+
+    <!-- Song Description -->
+    <section class="bg-content-bg p-8 rounded-xl shadow-lg mb-12">
+      <h2 class="text-3xl font-semibold text-primary mb-4">About the Song</h2>
+      <p class="text-text-secondary">
+        "Love Across Continents" is a heartfelt song celebrating love that transcends distance and borders. 
+        Through vivid imagery and poetic lyrics, Nellie Arts captures the magic of a connection that exists across oceans and cultures. 
+        The rhythm of the song mirrors the emotional pulse of love itself — universal, uniting, and timeless.
+      </p>
+    </section>
+
+    <!-- Lyrics Section -->
+    <section class="bg-content-bg p-8 rounded-xl shadow-lg lyrics">
+      <h2 class="text-3xl font-semibold text-primary mb-6">Lyrics</h2>
+
+      <p>
+When you smiled, the world began to move in time,
+My heart learned the rhythm of your laughter,
+And love danced into my life without warning.
+      </p>
+      <p>
+We found love beneath a sky of quiet stars,
+No storybook, just truth in your eyes,
+And suddenly, the world felt whole again.
+      </p>
+      <p>
+One world, one heart — beating in tune,
+Across every ocean, I’m drawn to you.
+Different lands, but love’s the same,
+One fire, one song, one name.
+      </p>
+      <p>
+Every sunrise paints your name in light,
+The world turns gentle when you smile,
+You are the calm that love becomes.
+      </p>
+      <p>
+Your flaws are verses I hold close,
+Your touch — the place time fades to still,
+Kiss me once, and forever begins again.
+      </p>
+      <p>
+One world, one heart — beating in tune,
+Across every ocean, I’m drawn to you.
+Different lands, but love’s the same,
+One fire, one song, one name.
+      </p>
+      <p>
+From every shore, beneath one sky,
+Love speaks in tones that never die.
+No borders, no lines, just hearts in rhyme — 
+One world, one heart, one time.
+      </p>
+    </section>
+
+    <!-- CTA Button -->
+    <div class="text-center mt-12">
+      <a href="contact.html" 
+         class="inline-block bg-primary text-black font-bold py-3 px-6 rounded-full hover:bg-primary-hover transition duration-300">
+         Submit Your Music for Review
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-content-bg py-8 text-center text-text-secondary border-t border-gray-800">
+    <p>&copy; 2025 TribleTunes. All rights reserved.</p>
+  </footer>
+</body>
+</html>
