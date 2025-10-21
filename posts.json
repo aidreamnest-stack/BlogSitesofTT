@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Vibrant Beats: 'Sunrise' Single",
+    "type": "Single Review",
+    "image": "https://via.placeholder.com/600x400.png?text=Album+Art+1",
+    "description": "A quick look at the latest chart-topper that's got everyone dancing. Is it worth the hype?",
+    "link": "post-1.html"
+  },
+  {
+    "title": "Live from the Arena",
+    "type": "Concert Review",
+    "image": "https://via.placeholder.com/600x400.png?text=Album+Art+2",
+    "description": "The lights, the sound, the energy. We were there for the tour's opening night.",
+    "link": "post-2.html"
+  },
+  {
+    "title": "Coffee with the Bassist",
+    "type": "Interview",
+    "image": "https://via.placeholder.com/600x400.png?text=Album+Art+3",
+    "description": "We sit down with the quiet genius behind the band's iconic basslines.",
+    "link": "post-3.html"
+  }
+]
