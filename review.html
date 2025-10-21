@@ -3,79 +3,156 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reviews | TribleTunes</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 text-gray-900">
+  <title>TribleTunes Blog - Music Reviews</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Dancing+Script:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Navbar -->
-  <header class="bg-white shadow-md">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">TribleTunes Reviews</h1>
-      <nav class="space-x-6">
-        <a href="index.html" class="hover:text-blue-500">Home</a>
-        <a href="reviews.html" class="text-blue-500 font-semibold">Reviews</a>
-        <a href="about.html" class="hover:text-blue-500">About</a>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'dark-bg': '#121212',
+            'content-bg': '#1e1e1e',
+            'primary': '#a855f7',
+            'primary-hover': '#c084fc',
+            'text-primary': '#f0f0f0',
+            'text-secondary': '#aaaaaa',
+          },
+          fontFamily: {
+            'logo': ['Lobster', 'cursive'],
+            'cursive': ['Dancing Script', 'cursive'],
+            'body': ['Lato', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-dark-bg text-text-primary">
+  <!-- Header -->
+  <header class="bg-content-bg shadow-md sticky top-0 z-50 border-b-2 border-primary">
+    <div class="container mx-auto px-4 py-5 flex justify-between items-center">
+      <a href="index.html" class="font-logo text-4xl text-text-primary">
+        TribleTunes Blog
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-toggle" class="md:hidden text-text-primary focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex space-x-6">
+        <a href="#" class="font-bold uppercase tracking-wider text-primary border-b-2 border-primary pb-1">Home</a>
+        <a href="review.html" class="font-bold uppercase tracking-wider text-text-primary hover:text-primary transition duration-300">Reviews</a>
+        <a href="#" class="font-bold uppercase tracking-wider text-text-primary hover:text-primary transition duration-300">Interviews</a>
+        <a href="#" class="font-bold uppercase tracking-wider text-text-primary hover:text-primary transition duration-300">About</a>
+        <a href="#" class="font-bold uppercase tracking-wider text-text-primary hover:text-primary transition duration-300">Contact</a>
       </nav>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="nav-menu" class="hidden md:hidden bg-content-bg pb-4">
+      <a href="#" class="block text-center py-3 px-4 font-bold text-primary">Home</a>
+      <a href="#" class="block text-center py-3 px-4 font-bold text-text-primary hover:text-primary transition duration-300">Reviews</a>
+      <a href="#" class="block text-center py-3 px-4 font-bold text-text-primary hover:text-primary transition duration-300">Interviews</a>
+      <a href="#" class="block text-center py-3 px-4 font-bold text-text-primary hover:text-primary transition duration-300">About</a>
+      <a href="#" class="block text-center py-3 px-4 font-bold text-text-primary hover:text-primary transition duration-300">Contact</a>
     </div>
   </header>
 
-  <!-- Page Heading -->
-  <section class="text-center py-12">
-    <h2 class="text-4xl font-bold mb-2">Latest Reviews</h2>
-    <p class="text-gray-600">Honest takes, detailed insights, and real opinions.</p>
-  </section>
-
-  <!-- Review Cards -->
-  <section class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
-    
-    <!-- Review Card 1 -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
-      <img src="https://images.unsplash.com/photo-1487215078519-e21cc028cb29?auto=format&fit=crop&w=800&q=80" class="w-full h-48 object-cover" alt="Album cover">
-      <div class="p-5">
-        <h3 class="text-xl font-bold mb-2">The Midnight Sky – Album Review</h3>
-        <p class="text-gray-600 mb-4">A breathtaking soundscape blending electronic warmth with emotional depth. Perfect for night drives.</p>
-        <div class="flex items-center justify-between">
-          <span class="font-semibold text-yellow-500">★★★★☆</span>
-          <a href="#" class="text-blue-500 font-medium hover:underline">Read More →</a>
+  <!-- Main Content -->
+  <main>
+    <!-- Featured Section -->
+    <section class="container mx-auto px-4 mt-10">
+      <div class="relative rounded-lg overflow-hidden shadow-2xl">
+        <img src="https://via.placeholder.com/1200x500.png?text=Featured+Album+Review"
+             alt="Featured album art"
+             class="w-full h-64 md:h-96 object-cover">
+        <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 bg-gradient-to-t from-black via-black/80 to-transparent">
+          <span class="text-sm font-bold text-primary uppercase tracking-widest">Album Review</span>
+          <h1 class="font-cursive text-4xl md:text-6xl text-white mt-2 mb-4">
+            The New Sound: 'Echoes of Midnight'
+          </h1>
+          <p class="hidden md:block text-text-secondary mb-6 max-w-2xl">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
+          </p>
+          <a href="#"
+             class="inline-block bg-primary text-white font-bold uppercase tracking-wider px-6 py-3 rounded-full hover:bg-primary-hover shadow-lg transition duration-300 transform hover:scale-105">
+            Read Full Review
+          </a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Review Card 2 -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
-      <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80" class="w-full h-48 object-cover" alt="Music cover">
-      <div class="p-5">
-        <h3 class="text-xl font-bold mb-2">Chillwave Nights – Track Review</h3>
-        <p class="text-gray-600 mb-4">Smooth, mellow, and deeply nostalgic. The kind of song that melts into the background in the best way.</p>
-        <div class="flex items-center justify-between">
-          <span class="font-semibold text-yellow-500">★★★★★</span>
-          <a href="#" class="text-blue-500 font-medium hover:underline">Read More →</a>
-        </div>
+    <!-- Recent Reviews -->
+    <section class="container mx-auto px-4 mt-16 mb-20">
+      <h2 class="font-logo text-4xl text-center mb-10">Recent Reviews</h2>
+
+      <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Posts will be loaded here dynamically -->
       </div>
-    </div>
-
-    <!-- Review Card 3 -->
-    <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition">
-      <img src="https://images.unsplash.com/photo-1602526218569-0b5be6fd1b12?auto=format&fit=crop&w=800&q=80" class="w-full h-48 object-cover" alt="Song cover">
-      <div class="p-5">
-        <h3 class="text-xl font-bold mb-2">Phonk Drive – Beat Review</h3>
-        <p class="text-gray-600 mb-4">Raw and hypnotic. A perfect blend of Memphis nostalgia and modern trap energy. A must-listen for night riders.</p>
-        <div class="flex items-center justify-between">
-          <span class="font-semibold text-yellow-500">★★★★☆</span>
-          <a href="#" class="text-blue-500 font-medium hover:underline">Read More →</a>
-        </div>
-      </div>
-    </div>
-
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="bg-white border-t mt-10">
-    <div class="max-w-6xl mx-auto px-6 py-6 text-center text-gray-600">
-      © 2025 TribleTunes. All rights reserved.
+  <footer class="bg-content-bg border-t border-primary py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-text-secondary mb-2">&copy; 2025 TribleTunes. All rights reserved.</p>
+      <p class="text-primary hover:text-primary-hover transition duration-300"></p>
     </div>
   </footer>
 
+  <!-- Mobile Menu Script -->
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("hidden");
+    });
+  </script>
+
+  <!-- Dynamic Posts Script -->
+  <script>
+    fetch('posts.json')
+      .then(response => response.json())
+      .then(posts => {
+        const container = document.getElementById('posts-container');
+
+        posts.forEach(post => {
+          const article = document.createElement('article');
+          article.className = "bg-content-bg rounded-lg shadow-lg overflow-hidden flex flex-col transform hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300";
+          article.innerHTML = `
+            <img src="${post.image}" alt="${post.title}" class="w-full h-56 object-cover">
+            <div class="p-6 flex-grow">
+              <span class="text-xs font-bold text-primary uppercase tracking-widest">${post.type}</span>
+              <h3 class="font-cursive text-3xl text-text-primary mt-2 mb-3">${post.title}</h3>
+              <p class="text-text-secondary mb-4">${post.description}</p>
+            </div>
+            <a href="${post.link}" class="block p-6 pt-0 font-bold text-primary hover:text-primary-hover">Read More &rarr;</a>
+          `;
+          container.appendChild(article);
+        });
+      })
+      .catch(err => console.error('Error loading posts:', err));
+  </script>
 </body>
 </html>
