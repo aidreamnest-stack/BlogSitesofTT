@@ -37,6 +37,24 @@
     .font-cursive {
       font-family: 'Pacifico', cursive;
     }
+
+    /* Input & textarea custom styling to ensure black background and white text */
+    .input-black {
+      background-color: #000000;
+      color: #ffffff;
+      border-color: #3f3f46; /* tailwind gray-700 like */
+    }
+    .input-black::placeholder {
+      color: #9ca3af; /* tailwind gray-400 like placeholder */
+    }
+    /* Button black style */
+    .btn-black {
+      background-color: #000000;
+      color: #ffffff;
+    }
+    .btn-black:hover {
+      background-color: #111111;
+    }
   </style>
 </head>
 
@@ -70,7 +88,7 @@
             id="name"
             name="name"
             required
-            class="w-full p-3 rounded-md bg-dark-bg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+            class="w-full p-3 rounded-md input-black focus:outline-none focus:ring-2 focus:ring-primary"
           />
         </div>
 
@@ -81,7 +99,8 @@
             id="email"
             name="email"
             required
-            class="w-full p-3 rounded-md bg-dark-bg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+            class="w-full p-3 rounded-md input-black focus:outline-none focus:ring-2 focus:ring-primary"
+            placeholder="you@example.com"
           />
         </div>
 
@@ -92,13 +111,14 @@
             name="message"
             rows="5"
             required
-            class="w-full p-3 rounded-md bg-dark-bg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"
+            class="w-full p-3 rounded-md input-black focus:outline-none focus:ring-2 focus:ring-primary"
+            placeholder="Write your message here..."
           ></textarea>
         </div>
 
         <button
           type="submit"
-          class="w-full bg-primary text-black font-bold py-3 rounded-md hover:bg-primary-hover transition duration-300"
+          class="w-full btn-black font-bold py-3 rounded-md hover:bg-gray-800 transition duration-300"
         >
           Send Message
         </button>
