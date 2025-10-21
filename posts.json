@@ -7,17 +7,12 @@
     "link": "post-1.html"
   },
   {
-    "title": "Live from the Arena",
-    "type": "Concert Review",
-    "image": "https://via.placeholder.com/600x400.png?text=Album+Art+2",
-    "description": "The lights, the sound, the energy. We were there for the tour's opening night.",
-    "link": "post-2.html"
-  },
-  {
-    "title": "Coffee with the Bassist",
-    "type": "Interview",
-    "image": "https://ik.imagekit.io/h2tos5anh/Untitled%20design_20251001_075216_0000.jpg?updatedAt=1759537640495",
-    "description": "We sit down with the quiet genius behind the band's iconic basslines.",
-    "link": "post-3.html"
+    "id": 1,
+    "title": "Love Across Continents",
+    "artist": "Nellie Arts",
+    "cover": "https://ik.imagekit.io/h2tos5anh/Nellie%20Arts-Love%20Across%20Continents.png",
+    "description": "A heartfelt song celebrating love that transcends distance and borders.",
+    "lyrics": "When you smiled, the world began to move in time,\nMy heart learned the rhythm of your laughter,\nAnd love danced into my life without warning.\n\nWe found love beneath a sky of quiet stars,\nNo storybook, just truth in your eyes,\nAnd suddenly, the world felt whole again.\n\nOne world, one heart — beating in tune,\nAcross every ocean, I’m drawn to you.\nDifferent lands, but love’s the same,\nOne fire, one song, one name.\n\nEvery sunrise paints your name in light,\nThe world turns gentle when you smile,\nYou are the calm that love becomes.\n\nYour flaws are verses I hold close,\nYour touch — the place time fades to still,\nKiss me once, and forever begins again.\n\nOne world, one heart — beating in tune,\nAcross every ocean, I’m drawn to you.\nDifferent lands, but love’s the same,\nOne fire, one song, one name.\n\nFrom every shore, beneath one sky,\nLove speaks in tones that never die.\nNo borders, no lines, just hearts in rhyme —\nOne world, one heart, one time.",
+    "date": "2025-10-21"
   }
 ]
