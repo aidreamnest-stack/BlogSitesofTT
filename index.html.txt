@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TribleTunes Blog - Music Reviews</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Dancing+Script:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'dark-bg': '#121212',
+            'content-bg': '#1e1e1e',
+            'primary': '#a855f7',
+            'primary-hover': '#c084fc',
+            'text-primary': '#f0f0f0',
+            'text-secondary': '#aaaaaa',
+          },
+          fontFamily: {
+            'logo': ['Lobster', 'cursive'],
+            'cursive': ['Dancing Script', 'cursive'],
+            'body': ['Lato', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-dark-bg text-text-primary">
+  <!-- Header -->
+  <header class="bg-content-bg shadow-md sticky top-0 z-50 border-b-2 border-primary">
+    <div class="container mx-auto px-4 py-5 flex justify-between items-center">
+      <a href="index.html" class="font-logo text-4xl text-text-primary">
+        TribleTunes Blog
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-toggle" class="md:hidden text-text-primary focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex space-x-6">
+        <a href="#" class="font-bold uppercase tracking-wider text-primary border-b-2 border-primary pb-1">Home</a>
+        <a href="#" class="font-bold uppercase tracking-wider text-text-primary hover:text-primary transition duration-300">Reviews</a>
+        <a href="#" class="font-bold uppercase tracking-wider text-text-primary hover:text-primary transition duration-300">Interviews</a>
+        <a href="#" class="font-bold uppercase tracking-wider text-text-primary hover:text-primary transition duration-300">About</a>
+        <a href="#" class="font-bold uppercase tracking-wider text-text-primary hover:text-primary transition duration-300">Contact</a>
+      </nav>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="nav-menu" class="hidden md:hidden bg-content-bg pb-4">
+      <a href="#" class="block text-center py-3 px-4 font-bold text-primary">Home</a>
+      <a href="#" class="block text-center py-3 px-4 font-bold text-text-primary hover:text-primary transition duration-300">Reviews</a>
+      <a href="#" class="block text-center py-3 px-4 font-bold text-text-primary hover:text-primary transition duration-300">Interviews</a>
+      <a href="#" class="block text-center py-3 px-4 font-bold text-text-primary hover:text-primary transition duration-300">About</a>
+      <a href="#" class="block text-center py-3 px-4 font-bold text-text-primary hover:text-primary transition duration-300">Contact</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Featured Section -->
+    <section class="container mx-auto px-4 mt-10">
+      <div class="relative rounded-lg overflow-hidden shadow-2xl">
+        <img src="https://via.placeholder.com/1200x500.png?text=Featured+Album+Review"
+             alt="Featured album art"
+             class="w-full h-64 md:h-96 object-cover">
+        <div class="absolute bottom-0 left-0 right-0 p-6 md:p-10 bg-gradient-to-t from-black via-black/80 to-transparent">
+          <span class="text-sm font-bold text-primary uppercase tracking-widest">Album Review</span>
+          <h1 class="font-cursive text-4xl md:text-6xl text-white mt-2 mb-4">
+            The New Sound: 'Echoes of Midnight'
+          </h1>
+          <p class="hidden md:block text-text-secondary mb-6 max-w-2xl">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.
+          </p>
+          <a href="#"
+             class="inline-block bg-primary text-white font-bold uppercase tracking-wider px-6 py-3 rounded-full hover:bg-primary-hover shadow-lg transition duration-300 transform hover:scale-105">
+            Read Full Review
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Reviews -->
+    <section class="container mx-auto px-4 mt-16 mb-20">
+      <h2 class="font-logo text-4xl text-center mb-10">Recent Reviews</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Post 1 -->
+        <article
+          class="bg-content-bg rounded-lg shadow-lg overflow-hidden flex flex-col transform hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300">
+          <img src="https://via.placeholder.com/600x400.png?text=Album+Art+1"
+               alt="Album art" class="w-full h-56 object-cover">
+          <div class="p-6 flex-grow">
+            <span class="text-xs font-bold text-primary uppercase tracking-widest">Single Review</span>
+            <h3 class="font-cursive text-3xl text-text-primary mt-2 mb-3">Vibrant Beats: 'Sunrise' Single</h3>
+            <p class="text-text-secondary mb-4">
+              A quick look at the latest chart-topper that's got everyone dancing. Is it worth the hype?
+            </p>
+          </div>
+          <a href="#" class="block p-6 pt-0 font-bold text-primary hover:text-primary-hover">Read More &rarr;</a>
+        </article>
+
+        <!-- Post 2 -->
+        <article
+          class="bg-content-bg rounded-lg shadow-lg overflow-hidden flex flex-col transform hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300">
+          <img src="https://via.placeholder.com/600x400.png?text=Album+Art+2"
+               alt="Album art" class="w-full h-56 object-cover">
+          <div class="p-6 flex-grow">
+            <span class="text-xs font-bold text-primary uppercase tracking-widest">Concert Review</span>
+            <h3 class="font-cursive text-3xl text-text-primary mt-2 mb-3">Live from the Arena</h3>
+            <p class="text-text-secondary mb-4">
+              The lights, the sound, the energy. We were there for the tour's opening night.
+            </p>
+          </div>
+          <a href="#" class="block p-6 pt-0 font-bold text-primary hover:text-primary-hover">Read More &rarr;</a>
+        </article>
+
+        <!-- Post 3 -->
+        <article
+          class="bg-content-bg rounded-lg shadow-lg overflow-hidden flex flex-col transform hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300">
+          <img src="https://via.placeholder.com/600x400.png?text=Album+Art+3"
+               alt="Album art" class="w-full h-56 object-cover">
+          <div class="p-6 flex-grow">
+            <span class="text-xs font-bold text-primary uppercase tracking-widest">Interview</span>
+            <h3 class="font-cursive text-3xl text-text-primary mt-2 mb-3">Coffee with the Bassist</h3>
+            <p class="text-text-secondary mb-4">
+              We sit down with the quiet genius behind the band's iconic basslines.
+            </p>
+          </div>
+<a href="post-1.html" class="block p-6 pt-0 font-bold text-primary hover:text-primary-hover">Read More &rarr;</a>
+
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-content-bg border-t border-primary py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-text-secondary mb-2">&copy; 2025 TribleTunes. All rights reserved.</p>
+      <p class="text-primary hover:text-primary-hover transition duration-300">
+      </p>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("hidden");
+    });
+  </script>
+</body>
+</html>
