@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews - TribleTunes</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --content-bg: #181818;
+      --text-primary: #ffffff;
+      --text-secondary: #bbbbbb;
+      --primary: #00ffc3;
+      --primary-hover: #00caa3;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
+    }
+
+    .font-logo {
+      font-family: 'Pacifico', cursive;
+    }
+
+    .font-cursive {
+      font-family: 'Pacifico', cursive;
+    }
+
+    .review-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 255, 195, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="bg-content-bg shadow-md py-4">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <h1 class="font-logo text-3xl text-primary">TribleTunes</h1>
+      <nav class="space-x-6">
+        <a href="index.html" class="hover:text-primary">Home</a>
+        <a href="review.html" class="text-primary font-semibold">Reviews</a>
+        <a href="contact.html" class="hover:text-primary">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Reviews Section -->
+  <section class="container mx-auto px-4 py-20">
+    <h2 class="font-logo text-5xl text-center mb-12">Music Reviews</h2>
+
+    <!-- Search Bar -->
+    <div class="max-w-md mx-auto mb-10">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search for songs or artists..."
+        class="w-full p-3 rounded-lg bg-content-bg border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+
+    <!-- Blog Container -->
+    <div id="reviewsContainer" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- JSON posts will appear here -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-content-bg py-6 text-center text-text-secondary border-t border-gray-800">
+    <p>&copy; 2025 TribleTunes. All rights reserved.</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    async function loadReviews() {
+      try {
+        const res = await fetch("blogs.json");
+        const data = await res.json();
+        const container = document.getElementById("reviewsContainer");
+
+        container.innerHTML = data
+          .map(
+            (post) => `
+            <div class="bg-content-bg rounded-xl shadow-lg p-6 review-card">
+              <img src="${post.image}" alt="${post.title}" class="rounded-lg mb-4 w-full h-52 object-cover" />
+              <h3 class="text-2xl font-semibold mb-2 text-primary">${post.title}</h3>
+              <p class="text-text-secondary mb-4">${post.description}</p>
+              <a href="${post.link}" class="inline-block text-black bg-primary px-4 py-2 rounded-md font-semibold hover:bg-primary-hover transition">Read More</a>
+            </div>
+          `
+          )
+          .join("");
+      } catch (error) {
+        console.error("Error loading reviews:", error);
+        document.getElementById("reviewsContainer").innerHTML =
+          "<p class='text-center text-red-400'>Unable to load blog posts.</p>";
+      }
+    }
+
+    // Search filter
+    document.getElementById("searchInput").addEventListener("input", async (e) => {
+      const query = e.target.value.toLowerCase();
+      const res = await fetch("blogs.json");
+      const data = await res.json();
+      const container = document.getElementById("reviewsContainer");
+
+      const filtered = data.filter(
+        (post) =>
+          post.title.toLowerCase().includes(query) ||
+          post.description.toLowerCase().includes(query)
+      );
+
+      container.innerHTML = filtered
+        .map(
+          (post) => `
+          <div class="bg-content-bg rounded-xl shadow-lg p-6 review-card">
+            <img src="${post.image}" alt="${post.title}" class="rounded-lg mb-4 w-full h-52 object-cover" />
+            <h3 class="text-2xl font-semibold mb-2 text-primary">${post.title}</h3>
+            <p class="text-text-secondary mb-4">${post.description}</p>
+            <a href="${post.link}" class="inline-block text-black bg-primary px-4 py-2 rounded-md font-semibold hover:bg-primary-hover transition">Read More</a>
+          </div>
+        `
+        )
+        .join("");
+    });
+
+    loadReviews();
+  </script>
+</body>
+</html>
