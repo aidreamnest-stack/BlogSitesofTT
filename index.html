@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TribleTunes Blog - Music Reviews</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -12,6 +13,7 @@
     rel="stylesheet"
   />
 
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
@@ -35,22 +37,75 @@
     .font-cursive {
       font-family: 'Pacifico', cursive;
     }
+    .review-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 255, 195, 0.2);
+    }
   </style>
 </head>
 
 <body>
   <!-- Header -->
-  <header class="bg-content-bg shadow-md py-4">
-    <div class="container mx-auto flex justify-between items-center px-4">
-      <h1 class="font-logo text-3xl text-primary">TribleTunes</h1>
-      <nav class="space-x-6">
-        <a href="index.html" class="hover:text-primary">Home</a>
-        <a href="review.html" class="hover:text-primary">Reviews</a>
-        <a href="contact.html" class="hover:text-primary">Contact</a>
-        <a href="about.html" class="hover:text-primary">About</a>
-      </nav>
-    </div>
-  </header>
+<header class="bg-content-bg shadow-md py-4 relative z-50">
+  <div class="container mx-auto flex justify-center items-center px-4 relative">
+    <h1 class="font-logo text-3xl text-primary absolute left-1/2 transform -translate-x-1/2">
+      TribleTunes
+    </h1>
+
+    <!-- Hamburger Button -->
+    <button id="menuBtn" class="text-white text-3xl focus:outline-none absolute right-4">
+      ☰
+    </button>
+  </div>
+</header>
+
+<!-- Sidebar Overlay -->
+<div id="overlay" class="fixed inset-0 bg-black opacity-80 hidden z-40 transition-opacity duration-300"></div>
+
+<!-- Sidebar Menu -->
+<aside id="sidebar"
+  class="fixed left-0 top-0 h-full w-64 bg-content-bg shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out z-50">
+  <div class="p-6">
+    <h2 class="font-logo text-2xl text-primary mb-8">Menu</h2>
+    <nav class="flex flex-col space-y-4">
+      <a href="index.html" class="hover:text-primary"> Home</a>
+      <a href="review.html" class="hover:text-primary"> Reviews</a>
+      <a href="contact.html" class="hover:text-primary"> Contact</a>
+      <a href="about.html" class="hover:text-primary"> About</a>
+    </nav>
+  </div>
+</aside>
+
+<script>
+  const menuBtn = document.getElementById("menuBtn");
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
+
+  function openSidebar() {
+    sidebar.classList.remove("-translate-x-full");
+    overlay.classList.remove("hidden");
+  }
+
+  function closeSidebar() {
+    sidebar.classList.add("-translate-x-full");
+    overlay.classList.add("hidden");
+  }
+
+  menuBtn.addEventListener("click", () => {
+    if (sidebar.classList.contains("-translate-x-full")) openSidebar();
+    else closeSidebar();
+  });
+
+  overlay.addEventListener("click", closeSidebar);
+
+  document.querySelectorAll("#sidebar a").forEach(link => {
+    link.addEventListener("click", closeSidebar);
+  });
+</script>
+
 
   <!-- Hero Section -->
   <section class="text-center py-20 px-4 bg-[url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center">
@@ -60,8 +115,18 @@
     </div>
   </section>
 
+  <!-- Search Bar -->
+  <section class="container mx-auto px-4 py-10">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search for songs or artists..."
+      class="w-full p-3 rounded-lg bg-content-bg border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary"
+    />
+  </section>
+
   <!-- Posts Section -->
-  <section class="container mx-auto px-4 mt-16 mb-20">
+  <section class="container mx-auto px-4 mb-20">
     <h2 class="font-logo text-4xl text-center mb-10">Recent Reviews</h2>
 
     <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -76,28 +141,69 @@
     <p>&copy; 2025 TribleTunes. All rights reserved.</p>
   </footer>
 
-  <!-- Dynamic Post Loader -->
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.25/bundled/lenis.min.js"></script>
+  <script>
+   const lenis = new Lenis({
+  duration: 1.5,  // slightly faster smooth scroll
+  
+});
+
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+  </script>
+
+  <!-- Sidebar Script -->
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const sidebar = document.getElementById("sidebar");
+    const overlay = document.getElementById("overlay");
+
+    function openSidebar() {
+      sidebar.classList.remove("-translate-x-full");
+      overlay.classList.remove("opacity-0", "pointer-events-none");
+      overlay.classList.add("opacity-100");
+    }
+
+    function closeSidebar() {
+      sidebar.classList.add("-translate-x-full");
+      overlay.classList.remove("opacity-100");
+      overlay.classList.add("opacity-0", "pointer-events-none");
+    }
+
+    menuBtn.addEventListener("click", () => {
+      if (sidebar.classList.contains("-translate-x-full")) openSidebar();
+      else closeSidebar();
+    });
+
+    overlay.addEventListener("click", closeSidebar);
+
+    document.querySelectorAll("#sidebar a").forEach(link => {
+      link.addEventListener("click", closeSidebar);
+    });
+  </script>
+
+  <!-- Dynamic Post Loader with Search -->
   <script>
     let previousData = "";
 
     async function loadPosts() {
       try {
-        const res = await fetch('posts.json?' + new Date().getTime()); // prevent caching
+        const res = await fetch('posts.json?' + new Date().getTime());
         const posts = await res.json();
         const container = document.getElementById('posts-container');
         const loadingText = document.getElementById('loading-text');
 
         const dataString = JSON.stringify(posts);
-        if (dataString === previousData) return; // skip if no new changes
+        if (dataString === previousData) return;
         previousData = dataString;
 
-        container.innerHTML = ""; // clear old posts
+        container.innerHTML = "";
         loadingText.style.display = 'none';
 
         posts.forEach(post => {
           const article = document.createElement('article');
-          article.className =
-            "bg-content-bg rounded-lg shadow-lg overflow-hidden flex flex-col transform hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300";
+          article.className = "bg-content-bg rounded-lg shadow-lg overflow-hidden flex flex-col transform hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300";
 
           article.innerHTML = `
             <img src="${post.image}" alt="${post.title}" class="w-full h-56 object-cover">
@@ -116,14 +222,39 @@
       }
     }
 
-    // Load immediately
     loadPosts();
+    setInterval(loadPosts, 180000); // refresh every 3 minutes
 
-    // Refresh every 3 minutes automatically
-    setInterval(loadPosts, 180000);
+    // Search filter
+    document.getElementById("searchInput").addEventListener("input", async (e) => {
+      const query = e.target.value.toLowerCase();
+      const res = await fetch('posts.json?' + new Date().getTime());
+      const posts = await res.json();
+      const container = document.getElementById('posts-container');
+
+      const filtered = posts.filter(post =>
+        post.title.toLowerCase().includes(query) ||
+        post.type.toLowerCase().includes(query) ||
+        post.description.toLowerCase().includes(query)
+      );
+
+      container.innerHTML = "";
+      filtered.forEach(post => {
+        const article = document.createElement('article');
+        article.className = "bg-content-bg rounded-lg shadow-lg overflow-hidden flex flex-col transform hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300";
+
+        article.innerHTML = `
+          <img src="${post.image}" alt="${post.title}" class="w-full h-56 object-cover">
+          <div class="p-6 flex-grow">
+            <span class="text-xs font-bold text-primary uppercase tracking-widest">${post.type}</span>
+            <h3 class="font-cursive text-3xl text-text-primary mt-2 mb-3">${post.title}</h3>
+            <p class="text-text-secondary mb-4">${post.description}</p>
+          </div>
+          <a href="${post.link}" class="block p-6 pt-0 font-bold text-primary hover:text-primary-hover">Read More &rarr;</a>
+        `;
+        container.appendChild(article);
+      });
+    });
   </script>
 </body>
 </html>
-
-
-
