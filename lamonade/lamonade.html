@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lemonade - Louis Tomlinson | TribleTunes</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --content-bg: #181818;
+      --text-primary: #f0f0f0;
+      --text-secondary: #bbbbbb;
+      --primary: #00ffc3;
+      --primary-hover: #00caa3;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
+    }
+
+    .font-logo {
+      font-family: 'Pacifico', cursive;
+    }
+
+    .font-cursive {
+      font-family: 'Pacifico', cursive;
+    }
+
+    /* Lyrics formatting */
+    .lyrics p {
+      margin-bottom: 1.5rem;
+      white-space: pre-line;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: #333;
+      color: var(--text-primary);
+      padding: 4px 10px;
+      margin: 2px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      transition: background-color 0.3s;
+    }
+
+    .tag:hover {
+      background-color: var(--primary);
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="bg-content-bg shadow-md py-4 relative z-50">
+  <div class="container mx-auto flex justify-center items-center px-4 relative">
+    <h1 class="font-logo text-3xl text-primary absolute left-1/2 transform -translate-x-1/2">
+      TribleTunes
+    </h1>
+
+    <!-- Hamburger Button -->
+    <button id="menuBtn" class="text-white text-3xl focus:outline-none absolute right-4">
+      ☰
+    </button>
+  </div>
+</header>
+
+<!-- Sidebar Overlay -->
+<div id="overlay" class="fixed inset-0 bg-black opacity-80 hidden z-40 transition-opacity duration-300"></div>
+
+<!-- Sidebar Menu -->
+<aside id="sidebar"
+  class="fixed left-0 top-0 h-full w-64 bg-content-bg shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out z-50">
+  <div class="p-6">
+    <h2 class="font-logo text-2xl text-primary mb-8">Menu</h2>
+    <nav class="flex flex-col space-y-4">
+      <a href="index.html" class="hover:text-primary"> Home</a>
+      <a href="review.html" class="hover:text-primary"> Reviews</a>
+      <a href="contact.html" class="hover:text-primary"> Contact</a>
+      <a href="about.html" class="hover:text-primary"> About</a>
+    </nav>
+  </div>
+</aside>
+
+<script>
+  const menuBtn = document.getElementById("menuBtn");
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
+
+  function openSidebar() {
+    sidebar.classList.remove("-translate-x-full");
+    overlay.classList.remove("hidden");
+  }
+
+  function closeSidebar() {
+    sidebar.classList.add("-translate-x-full");
+    overlay.classList.add("hidden");
+  }
+
+  menuBtn.addEventListener("click", () => {
+    if (sidebar.classList.contains("-translate-x-full")) openSidebar();
+    else closeSidebar();
+  });
+
+  overlay.addEventListener("click", closeSidebar);
+  document.querySelectorAll("#sidebar a").forEach(link => link.addEventListener("click", closeSidebar));
+</script>
+
+<!-- Blog Post Section -->
+<main class="container mx-auto px-4 py-16 max-w-5xl">
+
+  <!-- Song Cover & Title -->
+  <div class="text-center mb-12">
+    <img src="https://ik.imagekit.io/h2tos5anh/lamonade.jpg" 
+         alt="Lemonade - Louis Tomlinson" 
+         class="w-full md:w-1/2 mx-auto rounded-xl shadow-lg mb-6">
+    <h1 class="font-cursive text-5xl md:text-6xl text-primary mb-2">Lemonade</h1>
+    <p class="text-text-secondary text-lg md:text-xl">by <strong>Louis Tomlinson</strong></p>
+  </div>
+
+  <!-- Song Description -->
+  <section class="bg-content-bg p-8 rounded-xl shadow-lg mb-12">
+    <h2 class="text-3xl font-semibold text-primary mb-4">About the Song</h2>
+    <p class="text-text-secondary mb-4">
+      "Lemonade" is a vibrant track by Louis Tomlinson that blends introspective lyrics with lively rhythms. The song explores the intoxicating thrill of love and infatuation, using the metaphor of lemonade — bitter and sweet — to reflect complex emotions.
+    </p>
+    <p class="text-text-secondary mb-4">
+      Through clever lyricism, Louis navigates feelings of desire, temptation, and the dizzying effects of passion. The track's catchy melodies, layered production, and personal storytelling make it a standout in his repertoire.
+    </p>
+    <p class="text-text-secondary">
+      Fans are drawn to the song’s contrast between sweet hooks and more somber reflections, making it a relatable anthem for anyone who’s experienced the highs and lows of love.
+    </p>
+  </section>
+
+  <!-- Lyrics Section -->
+  <section class="bg-content-bg p-8 rounded-xl shadow-lg lyrics mb-12">
+    <h2 class="text-3xl font-semibold text-primary mb-6">Lyrics</h2>
+
+    <p>She got me wasted<br>
+    The way she’s making me lie<br>
+    Hung from her bracelet<br>
+    Her lucky charm if I like<br>
+    Symptoms of coming to life<br>
+    No point in thinking it twice<br>
+    She got me wasted<br>
+    The way I’m chasing the night<br>
+    I don’t wanna go home<br>
+    Am I losing control<br>
+    I don’t wanna go home<br>
+    Am I losing control</p>
+
+    <p>She’s so bitter<br>
+    She’s so sweet<br>
+    Lemonade<br>
+    Lemonade<br>
+    A little taste<br>
+    Is all I need<br>
+    Lemonade<br>
+    Lemonade</p>
+
+    <p>She got me waking<br>
+    At times that I’ve never seen<br>
+    Bright yellow spaceship<br>
+    Might make me start to believe<br>
+    Symptoms are stuck on repeat<br>
+    No point in trying to leave<br>
+    She got me waking<br>
+    It’s doing something to me<br>
+    I don’t wanna go home</p>
+
+    <p>She’s so bitter<br>
+    She’s so sweet<br>
+    Lemonade<br>
+    Lemonade<br>
+    A little taste<br>
+    Is all I need<br>
+    Lemonade<br>
+    Lemonade<br>
+    Is it only human<br>
+    To escape into delusion<br>
+    And if I should try to prove it<br>
+    Would I win or would I lose it</p>
+
+    <p>She’s so bitter<br>
+    She’s so sweet<br>
+    Lemonade<br>
+    Lemonade<br>
+    A little taste<br>
+    Is all I need<br>
+    Lemonade<br>
+    Lemonade</p>
+  </section>
+
+  <!-- Lyrics Analysis & Insight -->
+  <section class="bg-content-bg p-8 rounded-xl shadow-lg mb-12">
+    <h2 class="text-3xl font-semibold text-primary mb-4">Lyrics Analysis & Listener Insight</h2>
+    <p class="text-text-secondary mb-4">
+      "Lemonade" explores the intoxicating pull of desire and the conflict between restraint and indulgence. The lyrics “She’s so bitter, she’s so sweet” perfectly capture the push and pull of infatuation.
+    </p>
+    <p class="text-text-secondary mb-4">
+      The recurring imagery of sweetness and bitterness mirrors the emotional highs and lows in relationships. Louis’s choice of metaphor is clever, illustrating how love can be both exhilarating and overwhelming.
+    </p>
+    <p class="text-text-secondary">
+      Overall, the song is a compelling reflection on human vulnerability, attraction, and the complex emotions that come with love and longing.
+    </p>
+  </section>
+
+  <!-- Tags Section -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold text-primary mb-4">Tags</h2>
+    <div>
+      <span class="tag">Louis Tomlinson</span>
+      <span class="tag">Lemonade</span>
+      <span class="tag">Pop</span>
+      <span class="tag">Song Review</span>
+      <span class="tag">Lyrics</span>
+      <span class="tag">Music Analysis</span>
+    </div>
+  </section>
+
+  <!-- Listening Tips / CTA -->
+  <section class="text-center mb-12">
+    <h2 class="text-3xl font-semibold text-primary mb-4">Listening Tips</h2>
+    <p class="text-text-secondary mb-6">
+      For the best experience, play this track with headphones in a quiet environment. Let the layers of melody and lyricism fully immerse you in the emotional spectrum of "Lemonade".
+    </p>
+    <a href="https://app.one-submit.com/direct-submit/27237/2377/5549/TribleTunes-youtube-Music-Promotion" 
+       class="inline-block bg-gray-600 text-white px-6 py-3 rounded-full font-bold 
+              hover:bg-gray-500 hover:scale-105 hover:shadow-lg 
+              transition-transform transition-colors duration-300">
+       Submit Your Music for Review
+    </a>
+  </section>
+
+  <div class="mt-10 text-center">
+    <a href="index.html"
+       class="inline-block bg-gray-600 text-white px-6 py-3 rounded-full font-bold 
+              hover:bg-gray-500 hover:scale-105 hover:shadow-lg 
+              transition-transform transition-colors duration-300">
+      ← Back to Blog
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-content-bg py-8 text-center text-text-secondary border-t border-gray-800 mt-16">
+    <p>&copy; 2025 TribleTunes. All rights reserved.</p>
+  </footer>
+
+</main>
+</body>
+</html>
