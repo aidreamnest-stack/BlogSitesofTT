@@ -86,12 +86,14 @@
 
   function openSidebar() {
     sidebar.classList.remove("-translate-x-full");
-    overlay.classList.remove("hidden");
+    overlay.classList.remove("opacity-0", "pointer-events-none");
+    overlay.classList.add("opacity-100");
   }
 
   function closeSidebar() {
     sidebar.classList.add("-translate-x-full");
-    overlay.classList.add("hidden");
+    overlay.classList.remove("opacity-100");
+    overlay.classList.add("opacity-0", "pointer-events-none");
   }
 
   menuBtn.addEventListener("click", () => {
@@ -106,156 +108,124 @@
   });
 </script>
 
+<!-- Hero Section -->
+<section class="text-center py-20 px-4 bg-[url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center">
+  <div class="bg-black/70 p-10 rounded-lg inline-block">
+    <h2 class="text-5xl font-bold mb-4 font-logo text-primary">Discover the Music</h2>
+    <p class="max-w-xl mx-auto text-text-secondary">Your daily dose of song reviews, artist interviews, and everything music.</p>
+  </div>
+</section>
 
-  <!-- Hero Section -->
-  <section class="text-center py-20 px-4 bg-[url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center">
-    <div class="bg-black/70 p-10 rounded-lg inline-block">
-      <h2 class="text-5xl font-bold mb-4 font-logo text-primary">Discover the Music</h2>
-      <p class="max-w-xl mx-auto text-text-secondary">Your daily dose of song reviews, artist interviews, and everything music.</p>
-    </div>
-  </section>
+<!-- Search Bar -->
+<section class="container mx-auto px-4 py-10">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Search for songs or artists..."
+    class="w-full p-3 rounded-lg bg-content-bg border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary"
+  />
+</section>
 
-  <!-- Search Bar -->
-  <section class="container mx-auto px-4 py-10">
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Search for songs or artists..."
-      class="w-full p-3 rounded-lg bg-content-bg border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary"
-    />
-  </section>
+<!-- Posts Section -->
+<section class="container mx-auto px-4 mb-20">
+  <h2 class="font-logo text-4xl text-center mb-10">Recent Reviews</h2>
 
-  <!-- Posts Section -->
-  <section class="container mx-auto px-4 mb-20">
-    <h2 class="font-logo text-4xl text-center mb-10">Recent Reviews</h2>
+  <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Posts will load automatically -->
+  </div>
 
-    <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Posts will load automatically -->
-    </div>
+  <p id="loading-text" class="text-center text-text-secondary mt-8">Loading posts...</p>
+</section>
 
-    <p id="loading-text" class="text-center text-text-secondary mt-8">Loading posts...</p>
-  </section>
+<!-- Footer -->
+<footer class="bg-content-bg py-6 text-center text-text-secondary border-t border-gray-800">
+  <p>&copy; 2025 TribleTunes. All rights reserved.</p>
+</footer>
 
-  <!-- Footer -->
-  <footer class="bg-content-bg py-6 text-center text-text-secondary border-t border-gray-800">
-    <p>&copy; 2025 TribleTunes. All rights reserved.</p>
-  </footer>
-
-  <!-- Lenis Smooth Scroll -->
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.25/bundled/lenis.min.js"></script>
-  <script>
-   const lenis = new Lenis({
-  duration: 1.5,  // slightly faster smooth scroll
-  
+<!-- Lenis Smooth Scroll -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.25/bundled/lenis.min.js"></script>
+<script>
+ const lenis = new Lenis({
+  duration: 1.2,  // slightly faster smooth scroll
+  easing: t => t
 });
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+</script>
 
-    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-  </script>
+<!-- Dynamic Post Loader with Search -->
+<script>
+let previousData = "";
 
-  <!-- Sidebar Script -->
-  <script>
-    const menuBtn = document.getElementById("menuBtn");
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
+async function loadPosts() {
+  try {
+    const res = await fetch('data/posts.json?' + new Date().getTime());
+    const posts = await res.json();
+    const container = document.getElementById('posts-container');
+    const loadingText = document.getElementById('loading-text');
 
-    function openSidebar() {
-      sidebar.classList.remove("-translate-x-full");
-      overlay.classList.remove("opacity-0", "pointer-events-none");
-      overlay.classList.add("opacity-100");
-    }
+    const dataString = JSON.stringify(posts);
+    if (dataString === previousData) return;
+    previousData = dataString;
 
-    function closeSidebar() {
-      sidebar.classList.add("-translate-x-full");
-      overlay.classList.remove("opacity-100");
-      overlay.classList.add("opacity-0", "pointer-events-none");
-    }
+    container.innerHTML = "";
+    loadingText.style.display = 'none';
 
-    menuBtn.addEventListener("click", () => {
-      if (sidebar.classList.contains("-translate-x-full")) openSidebar();
-      else closeSidebar();
+    posts.forEach(post => {
+      const article = document.createElement('article');
+      article.className = "bg-content-bg rounded-lg shadow-lg overflow-hidden flex flex-col transform hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300";
+
+      article.innerHTML = `
+        <img src="${post.image}" alt="${post.title}" class="w-full h-56 object-cover">
+        <div class="p-6 flex-grow">
+          <span class="text-xs font-bold text-primary uppercase tracking-widest">${post.type}</span>
+          <h3 class="font-cursive text-3xl text-text-primary mt-2 mb-3">${post.title}</h3>
+          <p class="text-text-secondary mb-4">${post.description}</p>
+        </div>
+        <a href="${post.link}" class="block p-6 pt-0 font-bold text-primary hover:text-primary-hover">Read More &rarr;</a>
+      `;
+      container.appendChild(article);
     });
+  } catch (error) {
+    console.error('Error loading posts:', error);
+    document.getElementById('loading-text').textContent = 'Failed to load posts.';
+  }
+}
 
-    overlay.addEventListener("click", closeSidebar);
+// Initial load
+loadPosts();
+setInterval(loadPosts, 180000); // refresh every 3 minutes
 
-    document.querySelectorAll("#sidebar a").forEach(link => {
-      link.addEventListener("click", closeSidebar);
-    });
-  </script>
+// Search filter
+document.getElementById("searchInput").addEventListener("input", async (e) => {
+  const query = e.target.value.toLowerCase();
+  const res = await fetch('data/posts.json?' + new Date().getTime());
+  const posts = await res.json();
+  const container = document.getElementById('posts-container');
 
-  <!-- Dynamic Post Loader with Search -->
-  <script>
-    let previousData = "";
+  const filtered = posts.filter(post =>
+    post.title.toLowerCase().includes(query) ||
+    post.type.toLowerCase().includes(query) ||
+    post.description.toLowerCase().includes(query)
+  );
 
-    async function loadPosts() {
-      try {
-        const res = await fetch('posts.json?' + new Date().getTime());
-        const posts = await res.json();
-        const container = document.getElementById('posts-container');
-        const loadingText = document.getElementById('loading-text');
+  container.innerHTML = "";
+  filtered.forEach(post => {
+    const article = document.createElement('article');
+    article.className = "bg-content-bg rounded-lg shadow-lg overflow-hidden flex flex-col transform hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300";
 
-        const dataString = JSON.stringify(posts);
-        if (dataString === previousData) return;
-        previousData = dataString;
-
-        container.innerHTML = "";
-        loadingText.style.display = 'none';
-
-        posts.forEach(post => {
-          const article = document.createElement('article');
-          article.className = "bg-content-bg rounded-lg shadow-lg overflow-hidden flex flex-col transform hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300";
-
-          article.innerHTML = `
-            <img src="${post.image}" alt="${post.title}" class="w-full h-56 object-cover">
-            <div class="p-6 flex-grow">
-              <span class="text-xs font-bold text-primary uppercase tracking-widest">${post.type}</span>
-              <h3 class="font-cursive text-3xl text-text-primary mt-2 mb-3">${post.title}</h3>
-              <p class="text-text-secondary mb-4">${post.description}</p>
-            </div>
-            <a href="${post.link}" class="block p-6 pt-0 font-bold text-primary hover:text-primary-hover">Read More &rarr;</a>
-          `;
-          container.appendChild(article);
-        });
-      } catch (error) {
-        console.error('Error loading posts:', error);
-        document.getElementById('loading-text').textContent = 'Failed to load posts.';
-      }
-    }
-
-    loadPosts();
-    setInterval(loadPosts, 180000); // refresh every 3 minutes
-
-    // Search filter
-    document.getElementById("searchInput").addEventListener("input", async (e) => {
-      const query = e.target.value.toLowerCase();
-      const res = await fetch('posts.json?' + new Date().getTime());
-      const posts = await res.json();
-      const container = document.getElementById('posts-container');
-
-      const filtered = posts.filter(post =>
-        post.title.toLowerCase().includes(query) ||
-        post.type.toLowerCase().includes(query) ||
-        post.description.toLowerCase().includes(query)
-      );
-
-      container.innerHTML = "";
-      filtered.forEach(post => {
-        const article = document.createElement('article');
-        article.className = "bg-content-bg rounded-lg shadow-lg overflow-hidden flex flex-col transform hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300";
-
-        article.innerHTML = `
-          <img src="${post.image}" alt="${post.title}" class="w-full h-56 object-cover">
-          <div class="p-6 flex-grow">
-            <span class="text-xs font-bold text-primary uppercase tracking-widest">${post.type}</span>
-            <h3 class="font-cursive text-3xl text-text-primary mt-2 mb-3">${post.title}</h3>
-            <p class="text-text-secondary mb-4">${post.description}</p>
-          </div>
-          <a href="${post.link}" class="block p-6 pt-0 font-bold text-primary hover:text-primary-hover">Read More &rarr;</a>
-        `;
-        container.appendChild(article);
-      });
-    });
-  </script>
+    article.innerHTML = `
+      <img src="${post.image}" alt="${post.title}" class="w-full h-56 object-cover">
+      <div class="p-6 flex-grow">
+        <span class="text-xs font-bold text-primary uppercase tracking-widest">${post.type}</span>
+        <h3 class="font-cursive text-3xl text-text-primary mt-2 mb-3">${post.title}</h3>
+        <p class="text-text-secondary mb-4">${post.description}</p>
+      </div>
+      <a href="${post.link}" class="block p-6 pt-0 font-bold text-primary hover:text-primary-hover">Read More &rarr;</a>
+    `;
+    container.appendChild(article);
+  });
+});
+</script>
 </body>
 </html>
-
