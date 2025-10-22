@@ -4,20 +4,20 @@
     "type": "Single Review",
     "image": "https://ik.imagekit.io/h2tos5anh/Untitled%20design_20251001_075216_0000.jpg?updatedAt=1759537640495",
     "description": "A quick look at the latest chart-topper that's got everyone dancing. Is it worth the hype?",
-    "link": "post-1.html"
+    "link": "post/post-1.html"
   },
   {
     "title": "Nellie Arts - 'Love Across Continents'",
     "type": "Full Song Review",
     "image": "https://ik.imagekit.io/h2tos5anh/Nellie%20Arts-Love%20Across%20Continents.png",
     "description": "A heartfelt song celebrating love that transcends distance, borders, and cultures, with poetic lyrics and beautiful melody.",
-    "link": "LoveAcrossContinents/index.html"
+    "link": "post/LoveAcrossContinents/index.html"
   },
   {
     "title": "Louis Tomlinson - 'Lamonade'",
     "type": "Full Song Review",
     "image": "https://ik.imagekit.io/h2tos5anh/lamonade.jpg?updatedAt=1761119478468",
     "description": "‘Lemonade’ by Louis Tomlinson is a vibrant pop track that explores the bittersweet highs and lows of love, blending catchy melodies with introspective lyrics that capture the thrill of infatuation.",
-    "link": "lamonade/index.html"
+    "link": "post/lamonade/index.html"
   }
 ]
