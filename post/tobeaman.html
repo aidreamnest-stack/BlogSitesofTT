@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To be a man - Kizz Daniel | TribleTunes</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --content-bg: #181818;
+      --text-primary: #f0f0f0;
+      --text-secondary: #bbbbbb;
+      --primary: #00ffc3;
+      --primary-hover: #00caa3;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
+    }
+
+    .font-logo {
+      font-family: 'Pacifico', cursive;
+    }
+
+    .font-cursive {
+      font-family: 'Pacifico', cursive;
+    }
+
+    .lyrics p {
+      margin-bottom: 1.5rem;
+      white-space: pre-line;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: #333;
+      color: var(--text-primary);
+      padding: 4px 10px;
+      margin: 2px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      transition: background-color 0.3s;
+    }
+
+    .tag:hover {
+      background-color: var(--primary);
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="bg-content-bg shadow-md py-4 relative z-50">
+  <div class="container mx-auto flex justify-center items-center px-4 relative">
+    <h1 class="font-logo text-3xl text-primary absolute left-1/2 transform -translate-x-1/2">
+      TribleTunes
+    </h1>
+    <button id="menuBtn" class="text-white text-3xl focus:outline-none absolute right-4">☰</button>
+  </div>
+</header>
+
+<!-- Sidebar Overlay -->
+<div id="overlay" class="fixed inset-0 bg-black opacity-80 hidden z-40 transition-opacity duration-300"></div>
+
+<!-- Sidebar Menu -->
+<aside id="sidebar"
+  class="fixed left-0 top-0 h-full w-64 bg-content-bg shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out z-50">
+  <div class="p-6">
+    <h2 class="font-logo text-2xl text-primary mb-8">Menu</h2>
+    <nav class="flex flex-col space-y-4">
+      <a href="index.html" class="hover:text-primary"> Home</a>
+      <a href="review.html" class="hover:text-primary"> Reviews</a>
+      <a href="contact.html" class="hover:text-primary"> Contact</a>
+      <a href="about.html" class="hover:text-primary"> About</a>
+    </nav>
+  </div>
+</aside>
+
+<script>
+  const menuBtn = document.getElementById("menuBtn");
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
+
+  function openSidebar() {
+    sidebar.classList.remove("-translate-x-full");
+    overlay.classList.remove("hidden");
+  }
+
+  function closeSidebar() {
+    sidebar.classList.add("-translate-x-full");
+    overlay.classList.add("hidden");
+  }
+
+  menuBtn.addEventListener("click", () => {
+    sidebar.classList.contains("-translate-x-full") ? openSidebar() : closeSidebar();
+  });
+
+  overlay.addEventListener("click", closeSidebar);
+  document.querySelectorAll("#sidebar a").forEach(link => link.addEventListener("click", closeSidebar));
+</script>
+
+<main class="container mx-auto px-4 py-16 max-w-5xl">
+
+  <!-- Song Cover & Title -->
+  <div class="text-center mb-12">
+    <img src="https://ik.imagekit.io/h2tos5anh/tobeaman.jpg" 
+         alt="To be a man - Kizz Daniel" 
+         class="w-full md:w-1/2 mx-auto rounded-xl shadow-lg mb-6">
+    <h1 class="font-cursive text-5xl md:text-6xl text-primary mb-2">To be a man</h1>
+    <p class="text-text-secondary text-lg md:text-xl">by <strong>Kizz Daniel</strong></p>
+  </div>
+
+  <!-- Song Description -->
+  <section class="bg-content-bg p-8 rounded-xl shadow-lg mb-12">
+    <h2 class="text-3xl font-semibold text-primary mb-4">About the Song</h2>
+    <p class="text-text-secondary mb-4">
+      "To be a man" by Kizz Daniel explores the struggles, determination, and emotional journey of modern manhood. The lyrics capture the relentless grind and sacrifices that come with ambition, alongside personal reflection on life and relationships.
+    </p>
+  </section>
+
+  <!-- YouTube Video Section -->
+  <section class="bg-content-bg p-8 rounded-xl shadow-lg mb-12 text-center">
+    <h2 class="text-3xl font-semibold text-primary mb-6">Watch the Video</h2>
+    <iframe class="w-full md:w-3/4 h-64 md:h-96 rounded-lg mx-auto"
+            src="https://www.youtube.com/embed/O5OJC6ZUgIM?si=YCNCbVmRnpZx9lSp" 
+            title="To be a man - Kizz Daniel" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+  </section>
+
+  <!-- Lyrics Section -->
+  <section class="bg-content-bg p-8 rounded-xl shadow-lg lyrics mb-12">
+    <h2 class="text-3xl font-semibold text-primary mb-6">Lyrics</h2>
+    <p>
+      She won't stop pushing<br>
+      until she see my cadaver<br><br>
+      I work hard, sixteen hours in a day<br>
+      No time off, no holiday<br>
+      Pick two, pick two, last card, check up, ah<br>
+      Buy my ticket, make I take off, oh<br>
+      A quality time or Gucci bag, which one you want?<br>
+      You can't eat your cake and have it<br>
+      Gone are the days wey man dey beg kele<br>
+      If you no do again, Halima dey wait<br>
+      This your pattern no work again, come back again<br>
+      Ma wa ni Malay'<br><br>
+      Omo, if it easy to be a man<br>
+      take my shoes and go crazy<br>
+      Even when my energy down<br>
+      I dey drink ogogoro, come taste it<br>
+      Aiye ti mo wa, ori mi ma'jen jiya o<br>
+      Ma jen shalaye fun ingrate<br>
+      ... (lyrics continue)
+    </p>
+  </section>
+
+  <!-- Lyrics Analysis -->
+  <section class="bg-content-bg p-8 rounded-xl shadow-lg mb-12">
+    <h2 class="text-3xl font-semibold text-primary mb-4">Lyrics Analysis & Insight</h2>
+    <p class="text-text-secondary mb-4">
+      The song explores the challenges of manhood and perseverance. Kizz Daniel delivers a powerful reflection on working hard, overcoming obstacles, and staying true to oneself. The repeated motifs emphasize resilience, personal growth, and the balance between ambition and emotional well-being.
+    </p>
+  </section>
+
+  <!-- Tags Section -->
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold text-primary mb-4">Tags</h2>
+    <div>
+      <span class="tag">Kizz Daniel</span>
+      <span class="tag">To be a man</span>
+      <span class="tag">Afrobeat</span>
+      <span class="tag">Lyrics</span>
+      <span class="tag">Music Review</span>
+      <span class="tag">TribleTunes</span>
+    </div>
+  </section>
+
+  <!-- Listening Tips / CTA -->
+  <section class="text-center mb-12">
+    <h2 class="text-3xl font-semibold text-primary mb-4">Listening Tips</h2>
+    <p class="text-text-secondary mb-6">
+      For the best experience, play this track with headphones in a quiet environment. Let the rhythms and lyrics immerse you in the emotional depth of "To be a man".
+    </p>
+    <a href="https://app.one-submit.com/direct-submit/27237/2377/5549/TribleTunes-youtube-Music-Promotion" 
+       class="inline-block bg-gray-600 text-white px-6 py-3 rounded-full font-bold 
+              hover:bg-gray-500 hover:scale-105 hover:shadow-lg 
+              transition-transform transition-colors duration-300">
+       Submit Your Music for Review
+    </a>
+  </section>
+
+  <div class="mt-10 text-center">
+    <a href="index.html"
+       class="inline-block bg-gray-600 text-white px-6 py-3 rounded-full font-bold 
+              hover:bg-gray-500 hover:scale-105 hover:shadow-lg 
+              transition-transform transition-colors duration-300">
+      ← Back to Blog
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-content-bg py-8 text-center text-text-secondary border-t border-gray-800 mt-16">
+    <p>&copy; 2025 TribleTunes. All rights reserved.</p>
+  </footer>
+
+</main>
+</body>
+</html>
